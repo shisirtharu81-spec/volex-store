@@ -1,0 +1,66 @@
+{
+  "volexplayer": {
+    "username": "VolexPlayer",
+    "email": "volexplayer@gmail.com",
+    "passwordHash": "f11f05ca820d6be8e4118a51acad8c43",
+    "emailVerified": true,
+    "twoFactorEnabled": false,
+    "twoFactorSecret": "VOLX-422729292F2A",
+    "discordLinked": true,
+    "discordUsername": "VolexPlayer#0000",
+    "googleLinked": false,
+    "createdAt": "2026-07-04T15:08:20.139Z",
+    "rank": "Member",
+    "coins": 1500,
+    "tokens": 100,
+    "auditLogs": [
+      {
+        "id": "LOG-3145",
+        "event": "Authorized account via discord",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T15:08:20.139Z"
+      }
+    ],
+    "sessions": [
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjY0MTAwMTM5fQ==./8FtEiwCHfd01hD0LslZ1QlLNnwBEr9ctqgAL5+uSh0=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T15:08:20.141Z"
+      }
+    ]
+  },
+  "xd_suraj": {
+    "username": "xd_suraj",
+    "email": "xd_suraj@gmail.com",
+    "passwordHash": "90a238e9a4049e6676b5ec563d8238f1",
+    "emailVerified": true,
+    "twoFactorEnabled": false,
+    "twoFactorSecret": "VOLX-3FF8B39F114C",
+    "discordLinked": false,
+    "googleLinked": true,
+    "googleEmail": "xd_suraj@gmail.com",
+    "createdAt": "2026-07-04T15:08:41.339Z",
+    "rank": "Member",
+    "coins": 1500,
+    "tokens": 100,
+    "auditLogs": [
+      {
+        "id": "LOG-9077",
+        "event": "Authorized account via google",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T15:08:41.339Z"
+      }
+    ],
+    "sessions": [
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InhkX3N1cmFqIiwiZXhwIjoxNzgzMjY0MTIxMzM5fQ==.+ky7SdmzMaJH46iHub3K1awrLmnVmxOlish6ubf3BAU=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T15:08:41.340Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "VOLEX Store",
+  "description": "Premium Minecraft Server Store with a dark futuristic gaming theme, interactive user checkout, real-time player lookups, and simulated server console commands.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
