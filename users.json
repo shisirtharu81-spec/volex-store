@@ -15,6 +15,41 @@
     "tokens": 100,
     "auditLogs": [
       {
+        "id": "LOG-2290",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T18:32:14.675Z"
+      },
+      {
+        "id": "LOG-4235",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T18:27:58.470Z"
+      },
+      {
+        "id": "LOG-7096",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T18:23:45.460Z"
+      },
+      {
+        "id": "LOG-6765",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T18:21:24.701Z"
+      },
+      {
+        "id": "LOG-7817",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "timestamp": "2026-07-04T18:18:36.391Z"
+      },
+      {
         "id": "LOG-6418",
         "event": "Signed in via connected google node",
         "ip": "127.0.0.1",
@@ -54,6 +89,36 @@
         "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
         "ip": "127.0.0.1",
         "lastActive": "2026-07-04T16:27:19.196Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjc1NTE2MzkyfQ==.7UNYPhWVGMZuvcNFiqV66f3S9UY3x4tVEArTXS+KOos=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T18:18:36.397Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjc1Njg0NzAxfQ==.PzdA2u8UQQuCKVRXsiVM8q/i/6FLlOCdIeupV847A58=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T18:21:24.701Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjc1ODI1NDYwfQ==.b2VO1ipHWG1AhAzy8WdN9DR+hrEkbO3/DManV3eRFr0=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T18:23:45.460Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjc2MDc4NDcwfQ==.X/CqDc5B2vMfDR1tZUGlhQ5pez3CmoJuu7gRBFAU/Vg=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T18:27:58.470Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjc2MzM0Njc1fQ==.wMwusILn9tLXQFa9m3GIAjKBcxmkZ/ZbkhhYDIsIGt4=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T18:32:14.675Z"
       }
     ],
     "googleEmail": "gamer@gmail.com"
@@ -95,7 +160,7 @@
     "email": "shisirtharu16@gmail.com",
     "passwordHash": "d4cc2f0fac2f0d156632d7f80d082ac20e766b68dd073ec4ab60cb9aeb37e2be",
     "emailVerified": false,
-    "emailVerificationCode": "820339",
+    "emailVerificationCode": "856375",
     "twoFactorEnabled": false,
     "twoFactorSecret": "VOLX-6B5FD439AEEF",
     "discordLinked": false,
