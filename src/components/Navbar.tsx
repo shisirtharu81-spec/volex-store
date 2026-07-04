@@ -666,99 +666,74 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* ==================== 5. MEGA MENU CONTAINER (DESKTOP) ==================== */}
-        <AnimatePresence>
-          {isMegaMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="border-t border-purple-500/10 bg-[#090b10]/95 backdrop-blur-2xl overflow-hidden hidden lg:block"
-            >
-              <div className="mx-auto max-w-7xl px-8 py-8 grid grid-cols-3 gap-8">
-                
-                {/* Column 1: Game Modes */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2 text-[#bf5af2]">
-                    <Shield className="h-4.5 w-4.5" />
-                    <span className="text-xs font-mono font-black uppercase tracking-widest">{t.gamemodes}</span>
-                  </div>
-                  <ul className="space-y-3.5">
-                    <li className="group cursor-pointer">
-                      <div className="text-xs font-black text-white group-hover:text-purple-300 flex items-center justify-between">
-                        <span>Survival RPG [1.21.x]</span>
-                        <span className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">62 ONLINE</span>
-                      </div>
-                      <p className="text-[10px] text-gray-400 mt-0.5">Vanilla survival with Dungeons, Custom Enchantments, and Jobs.</p>
-                    </li>
-                    <li className="group cursor-pointer">
-                      <div className="text-xs font-black text-white group-hover:text-purple-300 flex items-center justify-between">
-                        <span>Void Skyblock</span>
-                        <span className="text-[9px] font-mono text-gray-500 bg-white/5 px-1.5 py-0.5 rounded">40 ONLINE</span>
-                      </div>
-                      <p className="text-[10px] text-gray-400 mt-0.5">Expand dynamic islands, trade on global economy, deploy minions.</p>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Column 2: Essential Commands */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2 text-cyan-400">
-                    <Terminal className="h-4.5 w-4.5" />
-                    <span className="text-xs font-mono font-black uppercase tracking-widest">{t.commands}</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="bg-black/60 border border-purple-500/5 p-2 rounded-lg flex items-center justify-between text-[10px] font-mono">
-                      <span className="text-[#bf5af2]">/spawn</span>
-                      <span className="text-gray-500">Instant teleport to Hub Lobby</span>
-                    </div>
-                    <div className="bg-black/60 border border-purple-500/5 p-2 rounded-lg flex items-center justify-between text-[10px] font-mono">
-                      <span className="text-cyan-400">/lp user &lt;name&gt;</span>
-                      <span className="text-gray-500">Query active LuckPerms Ranks</span>
-                    </div>
-                    <div className="bg-black/60 border border-purple-500/5 p-2 rounded-lg flex items-center justify-between text-[10px] font-mono">
-                      <span className="text-amber-400">/vote</span>
-                      <span className="text-gray-500">Earn free daily Ancient Crate Keys</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Column 3: Help & Wiki Documents */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2 text-amber-400">
-                    <BookOpen className="h-4.5 w-4.5" />
-                    <span className="text-xs font-mono font-black uppercase tracking-widest">{t.explore}</span>
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed font-sans">
-                    Read server rank progression charts, loot pool drop statistics, or command permissions manuals inside our secure player handbook.
-                  </p>
-                  <div className="flex gap-2 pt-2">
-                    <button
-                      onClick={() => {
-                        setIsMegaMenuOpen(false);
-                        setActiveSection('perks');
-                      }}
-                      className="bg-purple-600 hover:bg-purple-500 text-white font-mono text-[9px] uppercase font-bold py-2 px-4 rounded-lg cursor-pointer"
-                    >
-                      Compare Ranks
-                    </button>
-                    <a
-                      href="https://discord.gg/mNKqC2bAYH"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="bg-white/5 hover:bg-white/10 text-white border border-white/5 hover:border-white/10 font-mono text-[9px] uppercase font-bold py-2 px-4 rounded-lg cursor-pointer flex items-center gap-1"
-                    >
-                      <span>Join Discord Support</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </div>
-                </div>
-
+{/* ==================== 5. MEGA MENU CONTAINER (DESKTOP) ==================== */}
+<AnimatePresence>
+  {isMegaMenuOpen && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: 'auto' }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.3 }}
+      className="border-t border-purple-500/10 bg-[#090b10]/95 backdrop-blur-2xl overflow-hidden hidden lg:block"
+    >
+      <div className="mx-auto max-w-7xl px-8 py-8 grid grid-cols-3 gap-8">
+        
+        {/* Column 1: Game Modes */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-2 text-[#bf5af2]">
+            <Shield className="h-4.5 w-4.5" />
+            <span className="text-xs font-mono font-black uppercase tracking-widest">{t.gamemodes}</span>
+          </div>
+          <ul className="space-y-3.5">
+            <li className="group cursor-pointer">
+              <div className="text-xs font-black text-white group-hover:text-purple-300 flex items-center justify-between">
+                <span>Survival RPG [1.21.x]</span>
+                <span className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">62 ONLINE</span>
               </div>
+              <p className="text-[10px] text-gray-400 mt-0.5">Vanilla survival with Dungeons, Custom Enchantments, and Jobs.</p>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 2: Useful Commands */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-2 text-cyan-400">
+            <Terminal className="h-4.5 w-4.5" />
+            <span className="text-xs font-mono font-black uppercase tracking-widest">{t.commands}</span>
+          </div>
+          <ul className="space-y-2">
+            <li className="text-xs text-gray-400 hover:text-white cursor-pointer">/spawn - Return to lobby</li>
+            <li className="text-xs text-gray-400 hover:text-white cursor-pointer">/market - View global shop</li>
+            <li className="text-xs text-gray-400 hover:text-white cursor-pointer">/sethome - Claim your plot</li>
+          </ul>
+        </div>
+
+        {/* Column 3: Discord Community */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-2 text-indigo-400">
+            <Users className="h-4.5 w-4.5" />
+            <span className="text-xs font-mono font-black uppercase tracking-widest">Community</span>
+          </div>
+          <a 
+            href="https://discord.gg/mNKqC2bAYH" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 p-3 rounded-xl bg-indigo-500/5 border border-indigo-500/20 hover:bg-indigo-500/10 transition-all"
+          >
+                 <div className="bg-indigo-500/20 p-2 rounded-lg">
+                 <Users className="h-4 w-4 text-indigo-400" />
+                 </div>
+                 <div>
+                 <div className="text-xs font-black text-white">Join Our Discord</div>
+                 <div className="text-[10px] text-indigo-300">Chat with the community</div>
+                 </div>
+                 </a>
+                 </div>
+
+               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
 
       </nav>
 
