@@ -87,7 +87,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
           >
             <CheckCircle2 className="text-emerald-400 mx-auto mb-4" size={48} />
             <h3 className="text-2xl font-black mb-2">Payment Confirmed!</h3>
-            <p className="text-gray-400 mb-6">Your items will be dispatched to {ignUsername} shortly.</p>
+            <p className="text-gray-400 mb-6">Your items will be dispatched to {ignUsername} shortly and make ticket and send your payment screenshot to claim.</p>
             
             {/* Yaha add kar diya Discord button */}
             <a 
