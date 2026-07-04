@@ -715,7 +715,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="text-xs font-mono font-black uppercase tracking-widest">Community</span>
           </div>
           <a 
-            href="https://discord.gg/mNKqC2bAYH" 
+            href="https://discord.gg/H5wnTVhMpF" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group flex items-center gap-3 p-3 rounded-xl bg-indigo-500/5 border border-indigo-500/20 hover:bg-indigo-500/10 transition-all"
