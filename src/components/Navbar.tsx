@@ -154,6 +154,41 @@ const TRANSLATIONS = {
   }
 };
 
+const AuthModal = ({ isOpen, onClose, type }: { isOpen: boolean; onClose: () => void; type: 'login' | 'register' }) => {
+  if (!isOpen) return null;
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }}
+        className="w-full max-w-md bg-[#0c0c0e] border border-purple-500/20 p-8 rounded-3xl shadow-[0_0_50px_rgba(168,85,247,0.1)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="text-2xl font-black text-white mb-6 uppercase tracking-wider">
+          {type === 'login' ? 'Link Character' : 'Join VIP'}
+        </h2>
+        
+        <div className="space-y-4">
+          <input 
+            type="text" 
+            placeholder="Username (e.g. Notch)" 
+            className="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-purple-500 transition-all"
+          />
+          <button className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-bold text-white hover:scale-[1.02] transition-all">
+            {type === 'login' ? 'Authenticate' : 'Register Now'}
+          </button>
+        </div>
+        
+        <button onClick={onClose} className="mt-6 text-gray-500 text-sm hover:text-white w-full text-center">Close Window</button>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 export const Navbar: React.FC<NavbarProps> = ({
   serverStatus,
   activeSection,
