@@ -744,7 +744,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       Compare Ranks
                     </button>
                     <a
-                      href="https://discord.gg/MAdBF6Kmdf"
+                      href="https://discord.gg/mNKqC2bAYH"
                       target="_blank"
                       rel="noreferrer"
                       className="bg-white/5 hover:bg-white/10 text-white border border-white/5 hover:border-white/10 font-mono text-[9px] uppercase font-bold py-2 px-4 rounded-lg cursor-pointer flex items-center gap-1"

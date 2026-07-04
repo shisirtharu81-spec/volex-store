@@ -7,13 +7,27 @@
     "twoFactorEnabled": false,
     "twoFactorSecret": "VOLX-422729292F2A",
     "discordLinked": true,
-    "discordUsername": "VolexPlayer#0000",
-    "googleLinked": false,
+    "discordUsername": "VolexPlayer#8412",
+    "googleLinked": true,
     "createdAt": "2026-07-04T15:08:20.139Z",
     "rank": "Member",
     "coins": 1500,
     "tokens": 100,
     "auditLogs": [
+      {
+        "id": "LOG-6418",
+        "event": "Signed in via connected google node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "timestamp": "2026-07-04T16:27:19.165Z"
+      },
+      {
+        "id": "LOG-3534",
+        "event": "Signed in via connected discord node",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "timestamp": "2026-07-04T16:03:38.903Z"
+      },
       {
         "id": "LOG-3145",
         "event": "Authorized account via discord",
@@ -28,8 +42,21 @@
         "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36",
         "ip": "127.0.0.1",
         "lastActive": "2026-07-04T15:08:20.141Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjY3NDE4OTAzfQ==.lWBc+7JfGenGjO4j7cgac2RBdVkvhMRZUT0c3Qrhfbo=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T16:03:38.915Z"
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZvbGV4UGxheWVyIiwiZXhwIjoxNzgzMjY4ODM5MTY2fQ==.QlBlEFtNQYQ8R/gX3mU7jgIEJxtY9ZAOIhfWyVY2NaE=",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "ip": "127.0.0.1",
+        "lastActive": "2026-07-04T16:27:19.196Z"
       }
-    ]
+    ],
+    "googleEmail": "gamer@gmail.com"
   },
   "xd_suraj": {
     "username": "xd_suraj",
@@ -62,5 +89,30 @@
         "lastActive": "2026-07-04T15:08:41.340Z"
       }
     ]
+  },
+  "shisir": {
+    "username": "shisir",
+    "email": "shisirtharu16@gmail.com",
+    "passwordHash": "d4cc2f0fac2f0d156632d7f80d082ac20e766b68dd073ec4ab60cb9aeb37e2be",
+    "emailVerified": false,
+    "emailVerificationCode": "820339",
+    "twoFactorEnabled": false,
+    "twoFactorSecret": "VOLX-6B5FD439AEEF",
+    "discordLinked": false,
+    "googleLinked": false,
+    "createdAt": "2026-07-04T16:01:51.832Z",
+    "rank": "Member",
+    "coins": 1000,
+    "tokens": 0,
+    "auditLogs": [
+      {
+        "id": "LOG-5233",
+        "event": "Account Registered",
+        "ip": "127.0.0.1",
+        "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "timestamp": "2026-07-04T16:01:51.832Z"
+      }
+    ],
+    "sessions": []
   }
 }
