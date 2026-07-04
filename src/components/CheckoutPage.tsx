@@ -38,7 +38,7 @@ interface CheckoutPageProps {
   setActiveSection: (section: string) => void;
 }
 
-type PaymentMethodType = 'stripe' | 'paypal' | 'razorpay' | 'crypto' | 'tebex';
+type PaymentMethodType = 'upi | fampay';
 type CheckoutStepType = 'form' | 'loading' | 'success' | 'failed';
 
 export const CheckoutPage: React.FC<CheckoutPageProps> = ({
@@ -90,14 +90,6 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
     commandsExecuted: string[];
   } | null>(null);
 
-  // Crypto specific state variables
-  const [selectedCrypto, setSelectedCrypto] = useState<'BTC' | 'ETH' | 'SOL' | 'LTC'>('ETH');
-  const cryptoWallets = {
-    BTC: 'bc1qlvp6rwycsl5k4h3yevq802u0tqq6n7v7w039sn',
-    ETH: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',
-    SOL: 'HN7cAB2AzUvE1C3v65E2H1eD2f5V6g7h8i9j0k1l2m3n',
-    LTC: 'Lg6R6y8UuU9xYyZz1a2b3c4d5e6f7g8h9i'
-  };
   const [copiedWallet, setCopiedWallet] = useState(false);
 
   // Sync state if connected user shifts
@@ -283,7 +275,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
 
       <AnimatePresence mode="wait">
         
-        {/* VIEW 1: CHECKOUT FORM AND SUMMARY */}
+{/* VIEW 1: CHECKOUT FORM AND SUMMARY */}
         {checkoutStep === 'form' && (
           <motion.div 
             key="checkout-form"
@@ -292,352 +284,54 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
             exit={{ opacity: 0, y: -15 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
           >
-            {/* LEFT COLUMN: Billing details form */}
+            {/* LEFT COLUMN: Simplified Checkout */}
             <form onSubmit={handleCheckoutSubmit} className="lg:col-span-7 space-y-6">
               
-              {/* Account details card */}
               <div className="rounded-2xl border border-purple-500/10 bg-black/40 p-6 space-y-4 backdrop-blur-md">
-                <div className="flex items-center gap-2 border-b border-purple-500/5 pb-3">
-                  <span className="h-2 w-2 rounded-full bg-[#bf5af2]"></span>
-                  <h3 className="text-sm font-black font-sans uppercase tracking-wider text-white">1. Character Identity</h3>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Minecraft Username *</label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. shisir"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none font-mono"
-                      />
-                      {username && (
-                        <div className="absolute right-3 top-2 flex items-center gap-1.5 bg-[#bf5af2]/10 border border-[#bf5af2]/20 px-2 py-1 rounded text-[9px] font-mono text-[#bf5af2]">
-                          <img
-                            src={`https://crafatar.com/avatars/${username}?size=14`}
-                            alt="avatar"
-                            className="h-3.5 w-3.5 rounded-sm"
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://minotar.net/helm/Steve/14.png';
-                            }}
-                          />
-                          <span>Skin Preview</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Email Address (For Invoices) *</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. pilot@volexmc.net"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <p className="text-[10px] text-gray-500 leading-relaxed font-sans">
-                  * Ensure spelling is perfect. Server execution scripts use exact case-sensitive usernames to query UUID values from Mojang servers.
-                </p>
+                <h3 className="text-sm font-black text-white uppercase tracking-wider">Character Identity</h3>
+                <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Minecraft Username *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter your exact username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="w-full bg-[#0a0a0c] border border-purple-500/10 text-white rounded-xl px-4 py-3 text-xs focus:outline-none font-mono"
+                />
               </div>
 
-              {/* Billing Address Card */}
-              <div className="rounded-2xl border border-purple-500/10 bg-black/40 p-6 space-y-4 backdrop-blur-md">
-                <div className="flex items-center gap-2 border-b border-purple-500/5 pb-3">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400"></span>
-                  <h3 className="text-sm font-black font-sans uppercase tracking-wider text-white">2. Billing Address</h3>
+              {/* FamPay & Discord Section */}
+              <div className="rounded-2xl border border-emerald-500/20 bg-black/40 p-6 text-center space-y-4">
+                <h3 className="text-sm font-black text-emerald-400 uppercase">Payment & Claim</h3>
+                <div className="bg-white p-2 rounded-xl inline-block">
+                  <img src="YOUR_FAMPAY_QR_LINK_HERE" alt="FamPay QR" className="w-40 h-40" />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="md:col-span-2">
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Full Name *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Shisir Tharu"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Street Address *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. 142 Sector Cyber Plaza, Flat B"
-                      value={streetAddress}
-                      onChange={(e) => setStreetAddress(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">City *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. San Jose"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">State / Province / Region *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. California"
-                      value={stateRegion}
-                      onChange={(e) => setStateRegion(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">ZIP / Postal Code *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. 95112"
-                      value={zipCode}
-                      onChange={(e) => setZipCode(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white placeholder-gray-600 rounded-xl px-4 py-3 text-xs focus:outline-none font-mono"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-mono text-gray-500 uppercase block mb-1">Country *</label>
-                    <select
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      className="w-full bg-[#0a0a0c] border border-purple-500/10 focus:border-purple-500/30 text-white rounded-xl px-4 py-3 text-xs focus:outline-none"
-                    >
-                      <option value="United States">United States</option>
-                      <option value="India">India</option>
-                      <option value="United Kingdom">United Kingdom</option>
-                      <option value="Canada">Canada</option>
-                      <option value="Germany">Germany</option>
-                      <option value="Australia">Australia</option>
-                    </select>
-                  </div>
-                </div>
+                <p className="text-xs text-gray-400">Scan to pay. Then join Discord to create a ticket with your transaction ID.</p>
+                
+                <a 
+                  href="https://discord.gg/N23qcXWWTZ" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="w-full py-4 bg-indigo-600 rounded-xl flex items-center justify-center gap-2 font-bold text-sm hover:bg-indigo-500 transition-all"
+                >
+                  Join Discord to Claim Item
+                </a>
               </div>
 
-              {/* Secure Payment selector card */}
-              <div className="rounded-2xl border border-purple-500/10 bg-black/40 p-6 space-y-4 backdrop-blur-md">
-                <div className="flex items-center gap-2 border-b border-purple-500/5 pb-3">
-                  <span className="h-2 w-2 rounded-full bg-amber-400"></span>
-                  <h3 className="text-sm font-black font-sans uppercase tracking-wider text-white">3. Payment Channel</h3>
-                </div>
-
-                {/* Animated Cards Selectors */}
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                  
-                  {/* Stripe button */}
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('stripe')}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-center cursor-pointer ${
-                      paymentMethod === 'stripe'
-                        ? 'bg-purple-500/15 border-[#bf5af2] text-white shadow-[0_0_15px_rgba(191,90,242,0.15)] scale-[1.02]'
-                        : 'bg-black/30 border-purple-500/5 text-gray-500 hover:text-gray-300 hover:border-purple-500/10'
-                    }`}
-                  >
-                    <CreditCard className={`h-5 w-5 ${paymentMethod === 'stripe' ? 'text-[#bf5af2]' : 'text-gray-600'}`} />
-                    <span className="text-[10px] font-black uppercase font-mono tracking-wider">Stripe</span>
-                  </button>
-
-                  {/* PayPal button */}
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('paypal')}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-center cursor-pointer ${
-                      paymentMethod === 'paypal'
-                        ? 'bg-amber-500/15 border-amber-500 text-white shadow-[0_0_15px_rgba(245,158,11,0.15)] scale-[1.02]'
-                        : 'bg-black/30 border-purple-500/5 text-gray-500 hover:text-gray-300 hover:border-purple-500/10'
-                    }`}
-                  >
-                    <Globe className={`h-5 w-5 ${paymentMethod === 'paypal' ? 'text-amber-400' : 'text-gray-600'}`} />
-                    <span className="text-[10px] font-black uppercase font-mono tracking-wider">PayPal</span>
-                  </button>
-
-                  {/* Razorpay button */}
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('razorpay')}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-center cursor-pointer ${
-                      paymentMethod === 'razorpay'
-                        ? 'bg-cyan-500/15 border-cyan-400 text-white shadow-[0_0_15px_rgba(34,211,238,0.15)] scale-[1.02]'
-                        : 'bg-black/30 border-purple-500/5 text-gray-500 hover:text-gray-300 hover:border-purple-500/10'
-                    }`}
-                  >
-                    <Sparkles className={`h-5 w-5 ${paymentMethod === 'razorpay' ? 'text-cyan-400' : 'text-gray-600'}`} />
-                    <span className="text-[10px] font-black uppercase font-mono tracking-wider">Razorpay</span>
-                  </button>
-
-                  {/* Crypto button */}
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('crypto')}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-center cursor-pointer ${
-                      paymentMethod === 'crypto'
-                        ? 'bg-emerald-500/15 border-emerald-400 text-white shadow-[0_0_15px_rgba(52,211,153,0.15)] scale-[1.02]'
-                        : 'bg-black/30 border-purple-500/5 text-gray-500 hover:text-gray-300 hover:border-purple-500/10'
-                    }`}
-                  >
-                    <Coins className={`h-5 w-5 ${paymentMethod === 'crypto' ? 'text-emerald-400' : 'text-gray-600'}`} />
-                    <span className="text-[10px] font-black uppercase font-mono tracking-wider">Crypto</span>
-                  </button>
-
-                  {/* Tebex button */}
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('tebex')}
-                    className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all text-center cursor-pointer ${
-                      paymentMethod === 'tebex'
-                        ? 'bg-indigo-500/15 border-indigo-400 text-white shadow-[0_0_15px_rgba(129,140,248,0.15)] scale-[1.02]'
-                        : 'bg-black/30 border-purple-500/5 text-gray-500 hover:text-gray-300 hover:border-purple-500/10'
-                    }`}
-                  >
-                    <Terminal className={`h-5 w-5 ${paymentMethod === 'tebex' ? 'text-indigo-400' : 'text-gray-600'}`} />
-                    <span className="text-[10px] font-black uppercase font-mono tracking-wider">Tebex</span>
-                  </button>
-
-                </div>
-
-                {/* Dynamic detail sub-panel based on selected method */}
-                <div className="rounded-xl bg-[#07070c] border border-purple-500/5 p-4 text-xs">
-                  {paymentMethod === 'stripe' && (
-                    <div className="space-y-3">
-                      <span className="text-[9px] font-mono font-black text-[#bf5af2] uppercase tracking-widest block">STRIPE GATEWAY AGENT</span>
-                      <p className="text-gray-400 leading-relaxed">
-                        Supports standard Visa, MasterCard, Apple Pay, Google Pay, and localized bank cards. Your credentials are processed using standard AES-256 tokenization.
-                      </p>
-                      <div className="flex gap-4 text-[10px] font-mono text-[#bf5af2] font-bold">
-                        <span>• 3D-Secure 2.0 Enabled</span>
-                        <span>• PCI-DSS Compliant Tier 1</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {paymentMethod === 'paypal' && (
-                    <div className="space-y-3">
-                      <span className="text-[9px] font-mono font-black text-amber-500 uppercase tracking-widest block">PAYPAL INTERLOCK NODE</span>
-                      <p className="text-gray-400 leading-relaxed">
-                        Authorize instantly using your PayPal balance, saved credit cards, or instant bank debits. Safe, secure, and fast with customer support coverage.
-                      </p>
-                      <div className="font-mono text-amber-400 text-[10px] font-bold">
-                        → Opens an Express PayPal secure interlock frame upon dispatch.
-                      </div>
-                    </div>
-                  )}
-
-                  {paymentMethod === 'razorpay' && (
-                    <div className="space-y-3">
-                      <span className="text-[9px] font-mono font-black text-cyan-400 uppercase tracking-widest block">RAZORPAY INDIA HUB</span>
-                      <p className="text-gray-400 leading-relaxed">
-                        Optimized checkout for Indian clients. Supports UPI (Google Pay, PhonePe, Paytm, BHIM), Netbanking (SBI, HDFC, ICICI), and localized RuPay debit codes.
-                      </p>
-                      <div className="font-mono text-cyan-400 text-[10px] font-bold">
-                        ✓ Converts USD prices automatically with real-time Indian exchange rates.
-                      </div>
-                    </div>
-                  )}
-
-                  {paymentMethod === 'crypto' && (
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-mono font-black text-emerald-400 uppercase tracking-widest block">DECENTRALIZED CRYPTO LEDGER</span>
-                        
-                        {/* Selector */}
-                        <div className="flex gap-1.5 font-mono text-[9px] font-bold">
-                          {['BTC', 'ETH', 'SOL', 'LTC'].map((coin) => (
-                            <button
-                              key={coin}
-                              type="button"
-                              onClick={() => setSelectedCrypto(coin as any)}
-                              className={`px-2 py-0.5 rounded border transition-colors cursor-pointer ${
-                                selectedCrypto === coin 
-                                  ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300' 
-                                  : 'bg-black/40 border-purple-500/5 text-gray-500'
-                              }`}
-                            >
-                              {coin}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      <p className="text-gray-400 leading-relaxed">
-                        Pay anonymously with decentralized currencies. Our ledger monitor validates your transaction immediately upon block receipt.
-                      </p>
-
-                      <div className="bg-black/60 border border-emerald-500/10 p-3 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div className="space-y-1.5 flex-grow">
-                          <span className="text-[9px] font-mono text-gray-500 uppercase block">Send payment to address:</span>
-                          <div className="flex items-center gap-1.5">
-                            <span className="font-mono text-[10px] text-emerald-300 select-all font-bold break-all">{cryptoWallets[selectedCrypto]}</span>
-                            <button
-                              type="button"
-                              onClick={() => copyToClipboard(cryptoWallets[selectedCrypto], true)}
-                              className="text-gray-400 hover:text-emerald-300 p-1 flex-shrink-0 cursor-pointer"
-                              title="Copy Address"
-                            >
-                              <Copy className="h-3 w-3" />
-                            </button>
-                          </div>
-                          {copiedWallet && (
-                            <span className="text-[9px] font-mono text-emerald-400 block animate-pulse">✓ Address copied to clipboard!</span>
-                          )}
-                        </div>
-
-                        {/* Simulated QR Code representation */}
-                        <div className="h-14 w-14 bg-white rounded-lg p-1 flex items-center justify-center flex-shrink-0 border border-emerald-500/20">
-                          <QrCode className="h-full w-full text-black" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {paymentMethod === 'tebex' && (
-                    <div className="space-y-3">
-                      <span className="text-[9px] font-mono font-black text-indigo-400 uppercase tracking-widest block">TEBEX GLOBAL AGENT</span>
-                      <p className="text-gray-400 leading-relaxed">
-                        Tebex is the official Minecraft partner gateway. Supports PaySafeCard, international digital wallets, mobile credits, and localized checkout codes in 140+ countries.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Action dispatch button */}
               <button
                 type="submit"
-                disabled={cartItems.length === 0}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-sm uppercase tracking-wider transition-all cursor-pointer shadow-[0_0_20px_rgba(168,85,247,0.25)] hover:shadow-[0_0_35px_rgba(168,85,247,0.45)] flex items-center justify-center gap-2 border border-purple-400/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-sm uppercase tracking-wider"
               >
-                <ShieldCheck className="h-4.5 w-4.5 text-cyan-300 animate-pulse" />
-                <span>Verify &amp; Initiate Secure Payment</span>
+                Verify Payment & Complete
               </button>
+            </form>
 
-              {/* Special failure simulation trigger hint */}
-              <div className="text-center">
-                <span className="text-[9px] font-mono text-gray-600">
-                  💡 Tip: Input Minecraft Username "<span className="text-rose-400 font-bold">fail</span>" or "<span className="text-rose-400 font-bold">error</span>" to test the Fail State layout!
-                </span>
-              </div>
+            {/* RIGHT COLUMN: Keep your existing Summary logic here */}
+            <div className="lg:col-span-5">
+              {/* Apka purana summary box code yahan rahega */}
+            </div>
+          </motion.div>
+        )}
 
             </form>
 
