@@ -6,10 +6,7 @@ const PACKAGES = [
   { id: 1, name: 'VIP Rank', category: 'RANK', price: '4.99', icon: <Shield size={24} /> },
   { id: 2, name: 'Cosmic Key', category: 'KEY', price: '9.99', icon: <Key size={24} /> },
   { id: 3, name: 'Gladiator Kit', category: 'KIT', price: '0.00', icon: <Package size={24} /> },
-  { id: 4, name: 'Lord Rank', category: 'RANK', price: '14.99', icon: <Shield size={24} /> },
-  // Yahan Coins add kiye:
-  { id: 5, name: '1000 Volex Coins', category: 'COINS', price: '5.00', icon: <Coins size={24} /> },
-  { id: 6, name: '5000 Volex Coins', category: 'COINS', price: '20.00', icon: <Coins size={24} /> },
+  { id: 4, name: '1000 Volex Coins', category: 'COINS', price: '5.00', icon: <Coins size={24} /> },
 ];
 
 export const StorePackages = () => {
