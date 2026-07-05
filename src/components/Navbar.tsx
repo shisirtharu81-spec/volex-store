@@ -67,23 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center space-x-1.5">
             <button onClick={() => setActiveSection('home')} className="px-4 py-2.5 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.home} </button>
-            <button onClick={() => setActiveSection('shop')} className="px-4 py-2.5 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.store} </button>
-            
-            {/* ADMIN BUTTON - Password Protected */}
-            <button 
-              onClick={() => {
-                const password = prompt("Enter Admin Password:");
-                if (password === "stharu@098") {
-                  setActiveSection('admin');
-                } else {
-                  alert("Invalid Password!");
-                }
-              }}
-              className="px-4 py-2.5 text-xs font-bold uppercase text-red-400 hover:text-red-300 flex items-center gap-1.5 border border-red-900/20 bg-red-900/5 rounded-lg"
-            >
-              <Shield className="h-3.5 w-3.5" /> Admin
-            </button>
-          </div>
+            <button onClick={() => setActiveSection('shop')} className="px-4 py-2.5 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.store} </butto
 
           {/* Action Controls */}
           <div className="flex items-center gap-3">
