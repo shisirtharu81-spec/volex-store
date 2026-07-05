@@ -44,13 +44,6 @@ interface PremiumHomeProps {
 
 // Live Simulated Purchases Feed Data
 const RECENT_BUYERS = [
-  { player: "Notch", item: "VOLEX Cosmic Rank", time: "1 min ago", avatar: "Notch", price: 49.99 },
-  { player: "Steve", item: "5x Cosmic Crate Keys", time: "3 mins ago", avatar: "Steve", price: 19.99 },
-  { player: "Alex", item: "15,000 Volex Coins", time: "6 mins ago", avatar: "Alex", price: 49.99 },
-  { player: "Herobrine", item: "MVP+ Rank", time: "11 mins ago", avatar: "MHF_Herobrine", price: 29.99 },
-  { player: "VolexFan", item: "1x Ancient Crate Key", time: "14 mins ago", avatar: "Steve", price: 1.99 },
-  { player: "Dream", item: "Volex Cyber Bundle", time: "19 mins ago", avatar: "Dream", price: 34.99 },
-  { player: "Techno", item: "VOLEX Cosmic Rank", time: "25 mins ago", avatar: "Technoblade", price: 49.99 }
 ];
 
 // Interactive Crate Prizes Pool for the simulated Crate Roll
