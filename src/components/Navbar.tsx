@@ -45,7 +45,7 @@ interface NavbarProps {
   onOpenAuth?: () => void;
 }
 
-type Language = 'EN' | 'ES' | 'DE' | 'HI';
+type Language = 'EN' | 'HI';
 
 const TRANSLATIONS = {
   EN: {
@@ -483,9 +483,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="appearance-none bg-white/5 border border-white/5 hover:border-white/10 text-xs font-mono font-bold text-gray-300 hover:text-white px-3.5 py-2 pr-7 rounded-xl focus:outline-none cursor-pointer transition-all"
                 >
                   <option value="USD" className="bg-[#090b10]">USD ($)</option>
-                  <option value="EUR" className="bg-[#090b10]">EUR (€)</option>
                   <option value="INR" className="bg-[#090b10]">INR (₹)</option>
-                  <option value="GBP" className="bg-[#090b10]">GBP (£)</option>
                 </select>
                 <div className="absolute top-1/2 right-3 -translate-y-1/2 pointer-events-none text-gray-500 text-[8px]">▼</div>
               </div>
@@ -861,8 +859,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="w-full bg-[#111115] border border-white/5 text-xs text-gray-300 p-2.5 rounded-xl focus:outline-none"
                 >
                   <option value="EN">English</option>
-                  <option value="ES">Español</option>
-                  <option value="DE">Deutsch</option>
                   <option value="HI">हिन्दी</option>
                 </select>
               </div>
@@ -875,9 +871,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="w-full bg-[#111115] border border-white/5 text-xs text-gray-300 p-2.5 rounded-xl focus:outline-none"
                 >
                   <option value="USD">USD ($)</option>
-                  <option value="EUR">EUR (€)</option>
                   <option value="INR">INR (₹)</option>
-                  <option value="GBP">GBP (£)</option>
                 </select>
               </div>
             </div>
