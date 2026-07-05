@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { 
-  ShoppingBag, Terminal, ExternalLink, Activity, Sparkles, Sliders, Sun, Moon, 
-  Globe, ChevronDown, BookOpen, Compass, HelpCircle, Shield, Key, User, 
-  Users, LogOut, ChevronRight, UserPlus, Menu, X, Lock, Check, Award
+  ShoppingBag, Terminal, Compass, Shield, User, LogOut, 
+  Menu, X, Lock, UserPlus, Sun, Moon, Globe, ChevronDown, Check
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ServerStatus } from '../types';
+
+// Types definition
+type Language = 'EN' | 'ES' | 'DE' | 'HI';
 
 interface NavbarProps {
-  serverStatus: ServerStatus | null;
+  serverStatus: any;
   activeSection: string;
   setActiveSection: (sec: string) => void;
   cartCount: number;
@@ -21,25 +22,22 @@ interface NavbarProps {
   onOpenAuth?: () => void;
 }
 
-type Language = 'EN' | 'ES' | 'DE' | 'HI';
-
 const TRANSLATIONS: Record<Language, any> = {
-  EN: { home: "Home", store: "Store Packages", compare: "Rank Comparison", console: "Console Dashboard", login: "Link Character", register: "Register VIP", disconnect: "Disconnect", portal: "Server Portals", gamemodes: "Game Modes", commands: "Useful Commands", langName: "English" },
-  ES: { home: "Inicio", store: "Paquetes", compare: "Comparar Rangos", console: "Panel de Control", login: "Vincular Personaje", register: "Registrar VIP", disconnect: "Desconectar", portal: "Portales de Red", gamemodes: "Modos de Juego", commands: "Comandos Útiles", langName: "Español" },
-  DE: { home: "Startseite", store: "Store-Pakete", compare: "Rang-Vergleich", console: "Konsolen-Dashboard", login: "Spieler verbinden", register: "VIP Registrieren", disconnect: "Trennen", portal: "Server Portale", gamemodes: "Spielmodi", commands: "Befehle", langName: "Deutsch" },
-  HI: { home: "होम", store: "स्टोर पैकेजेस", compare: "रैंक तुलना", console: "कंसोल डैशबोर्ड", login: "आईडी लिंक करें", register: "वीआईपी रजिस्टर", disconnect: "डिस्कनेक्ट", portal: "सर्वर पोर्टल", gamemodes: "गेम मोड्स", commands: "उपयोगी कमांड्स", langName: "हिन्दी" }
+  EN: { home: "Home", store: "Store Packages", login: "Link Character", register: "Register VIP", disconnect: "Disconnect", portal: "Server Portals", langName: "English" },
+  ES: { home: "Inicio", store: "Paquetes", login: "Vincular Personaje", register: "Registrar VIP", disconnect: "Desconectar", portal: "Portales de Red", langName: "Español" },
+  DE: { home: "Startseite", store: "Store-Pakete", login: "Spieler verbinden", register: "VIP Registrieren", disconnect: "Trennen", portal: "Server Portale", langName: "Deutsch" },
+  HI: { home: "होम", store: "स्टोर पैकेजेस", login: "आईडी लिंक करें", register: "वीआईपी रजिस्टर", disconnect: "डिस्कनेक्ट", portal: "सर्वर पोर्टल", langName: "हिन्दी" }
 };
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeSection, setActiveSection, cartCount, toggleCart, currency, 
-  setCurrency, connectedUser, onDisconnect, onConnectDirect, onOpenAuth
+  setCurrency, connectedUser, onDisconnect, onOpenAuth
 }) => {
   const [lang, setLang] = useState<Language>('EN');
   const [themeMode, setThemeMode] = useState<'amethyst' | 'emerald'>('amethyst');
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-
+  
   const t = TRANSLATIONS[lang];
 
   const handleToggleTheme = () => {
@@ -66,39 +64,40 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="text-xl font-black text-white">VOLEX</span>
           </div>
 
-          {/* Main Nav */}
-          <div className="hidden lg:flex items-center space-x-1">
-            <button onClick={() => setActiveSection('home')} className="px-4 py-2 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.home} </button>
-            <button onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)} className="flex items-center gap-1 px-4 py-2 text-xs font-bold uppercase text-gray-400 hover:text-white">
-              <Compass className="h-3.5 w-3.5" /> {t.portal}
+          {/* Desktop Nav Items */}
+          <div className="hidden lg:flex items-center space-x-1.5">
+            <button onClick={() => setActiveSection('home')} className="px-4 py-2.5 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.home} </button>
+            <button onClick={() => setActiveSection('shop')} className="px-4 py-2.5 text-xs font-bold uppercase text-gray-400 hover:text-white"> {t.store} </button>
+            
+            {/* ADMIN BUTTON - Password Protected */}
+            <button 
+              onClick={() => {
+                const password = prompt("Enter Admin Password:");
+                if (password === "stharu@098") {
+                  setActiveSection('admin');
+                } else {
+                  alert("Invalid Password!");
+                }
+              }}
+              className="px-4 py-2.5 text-xs font-bold uppercase text-red-400 hover:text-red-300 flex items-center gap-1.5 border border-red-900/20 bg-red-900/5 rounded-lg"
+            >
+              <Shield className="h-3.5 w-3.5" /> Admin
             </button>
           </div>
 
-          {/* Actions */}
+          {/* Action Controls */}
           <div className="flex items-center gap-3">
             <button onClick={handleToggleTheme} className="p-2 rounded-xl bg-white/5 hover:bg-white/10">
               {themeMode === 'amethyst' ? <Moon className="h-4 w-4 text-purple-400" /> : <Sun className="h-4 w-4 text-amber-400" />}
             </button>
             
-            <button onClick={toggleCart} className="relative p-2.5 rounded-xl bg-white/5">
+            <button onClick={toggleCart} className="relative p-2.5 rounded-xl bg-white/5 hover:bg-white/10">
               <ShoppingBag className="h-4 w-4 text-gray-400" />
-              {cartCount > 0 && <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-cyan-500 text-[8px] flex items-center justify-center text-black font-bold">{cartCount}</span>}
+              {cartCount > 0 && <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-cyan-500 text-[8px] flex items-center justify-center text-black font-black">{cartCount}</span>}
             </button>
           </div>
         </div>
       </div>
-
-      {/* Mega Menu */}
-      <AnimatePresence>
-        {isMegaMenuOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t border-purple-500/10 overflow-hidden hidden lg:block">
-            <div className="mx-auto max-w-7xl p-8 grid grid-cols-3 gap-8">
-              {/* Menu content simplified */}
-              <div className="text-gray-400 text-xs">Mega Menu Content here...</div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };
