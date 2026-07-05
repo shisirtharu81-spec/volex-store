@@ -507,27 +507,27 @@ export default function App() {
               )}
             </div>
 
-            {/* Sub-category Tabs */}
-            <div className="flex flex-wrap items-center gap-2">
-              {['All', 'Ranks', 'Crates', 'Keys', 'Coins', 'Kits', 'Bundles', 'Season Pass', 'Cosmetics', 'Pets', 'Particles', 'Commands', 'Boosters', 'Wishlist'].map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
-                    selectedCategory === cat
-                      ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-purple-500/40 shadow-[0_0_15px_rgba(147,51,234,0.15)]'
-                      : 'bg-[#0a0a0d] border-purple-500/10 hover:border-purple-500/30 text-gray-400 hover:text-purple-300'
-                  }`}
-                >
-                  {cat === 'Wishlist' ? (
-                    <>
-                      <Heart className={`h-3.5 w-3.5 ${wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : 'text-gray-400'}`} />
-                      <span>Wishlist ({wishlist.length})</span>
-                    </>
-                  ) : cat === 'All' ? 'View All' : cat}
-                </button>
-              ))}
-            </div>
+            {{/* Sub-category Tabs */}
+                   <div className="flex flex-wrap items-center gap-2">
+                  {['All', 'Ranks', 'Keys', 'Coins', 'Kits', 'Wishlist'].map((cat) => (
+                 <button
+               key={cat}
+             onClick={() => setSelectedCategory(cat)}
+                className={`px-4.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
+                  selectedCategory === cat
+                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-purple-500/40 shadow-[0_0_15px_rgba(147,51,234,0.15)]'
+             : 'bg-[#0a0a0d] border-purple-500/10 hover:border-purple-500/30 text-gray-400 hover:text-purple-300'
+            }`}
+           >
+          {cat === 'Wishlist' ? (
+              <>
+                <Heart className={`h-3.5 w-3.5 ${wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : 'text-gray-400'}`} />
+                 <span>Wishlist ({wishlist.length})</span>
+        </>
+          ) : cat === 'All' ? 'View All' : cat}
+       </button>
+      ))}
+    </div>
 
             {/* Username gate if disconnected */}
             {!connectedUser && (
