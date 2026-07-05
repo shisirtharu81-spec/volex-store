@@ -24,7 +24,6 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
 
-  // Allow quantity adjustment for consumable keys, coins, kits, and boosters, but not ranks/passes/bundles
   const isRankOrBundle = item.category === 'Ranks' || item.category === 'Bundles' || item.category === 'Season Pass';
   const canSelectQuantity = !isRankOrBundle && item.id !== 'bundle-cyber' && item.id !== 'bundle-overlord';
 
@@ -33,7 +32,7 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
 
   const handleAdd = () => {
     onAddToCart(item, quantity);
-    setQuantity(1); // Reset card quantity state
+    setQuantity(1);
   };
 
   const handleImmediateBuy = () => {
@@ -44,34 +43,20 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
     }
   };
 
-  // Calculate discount percentage if applicable
   const discountPercentage = item.originalPrice 
     ? Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100) 
     : 0;
 
-  // Render custom Framer Motion variants based on specific product animations
   const getCardAnimation = () => {
     switch (item.animation) {
       case 'float':
-        return {
-          animate: { y: [0, -6, 0] },
-          transition: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-        };
+        return { animate: { y: [0, -6, 0] }, transition: { repeat: Infinity, duration: 4, ease: "easeInOut" } };
       case 'pulse-slow':
-        return {
-          animate: { scale: [1, 1.012, 1] },
-          transition: { repeat: Infinity, duration: 3.5, ease: "easeInOut" }
-        };
+        return { animate: { scale: [1, 1.012, 1] }, transition: { repeat: Infinity, duration: 3.5, ease: "easeInOut" } };
       case 'vortex-glow':
-        return {
-          animate: { boxShadow: ["0 0 15px rgba(191,90,242,0.1)", "0 0 30px rgba(191,90,242,0.3)", "0 0 15px rgba(191,90,242,0.1)"] },
-          transition: { repeat: Infinity, duration: 3, ease: "easeInOut" }
-        };
+        return { animate: { boxShadow: ["0 0 15px rgba(191,90,242,0.1)", "0 0 30px rgba(191,90,242,0.3)", "0 0 15px rgba(191,90,242,0.1)"] }, transition: { repeat: Infinity, duration: 3, ease: "easeInOut" } };
       case 'glow-orange':
-        return {
-          animate: { boxShadow: ["0 0 15px rgba(245,158,11,0.1)", "0 0 30px rgba(245,158,11,0.25)", "0 0 15px rgba(245,158,11,0.1)"] },
-          transition: { repeat: Infinity, duration: 3, ease: "easeInOut" }
-        };
+        return { animate: { boxShadow: ["0 0 15px rgba(245,158,11,0.1)", "0 0 30px rgba(245,158,11,0.25)", "0 0 15px rgba(245,158,11,0.1)"] }, transition: { repeat: Infinity, duration: 3, ease: "easeInOut" } };
       default:
         return {};
     }
@@ -90,62 +75,9 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
       className={`group relative overflow-hidden rounded-2xl border ${item.borderColor} bg-black/40 p-5 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/40 hover:bg-black/60 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex flex-col justify-between h-full`}
     >
       
-      {/* Background radial soft light halo */}
       <div className={`absolute -right-16 -top-16 h-36 w-36 rounded-full bg-gradient-to-r ${item.gradient} opacity-10 blur-3xl group-hover:opacity-20 transition-all duration-500 pointer-events-none`}></div>
 
       <div>
-        {/* Card Image Wrapper with interactive Zoom */}
-        {item.image && (
-          <div 
-            onClick={() => onSelect && onSelect(item)}
-            className={`relative h-44 w-full rounded-xl overflow-hidden mb-4 border border-purple-500/10 bg-zinc-950/50 flex items-center justify-center ${onSelect ? 'cursor-pointer' : ''}`}
-          >
-            
-            {/* Absolute badge overlays */}
-            <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1.5 pointer-events-none">
-              <span className="text-[9px] font-mono font-bold text-purple-400 bg-purple-950/70 backdrop-blur-md px-2 py-0.5 rounded border border-purple-500/20 uppercase tracking-widest w-fit">
-                {item.category}
-              </span>
-              {item.badge && (
-                <span className="flex items-center gap-1 text-[8px] font-black text-[#bf5af2] bg-[#bf5af2]/10 backdrop-blur-md border border-[#bf5af2]/30 px-2.5 py-0.5 rounded-full animate-pulse uppercase tracking-wider w-fit">
-                  <Sparkles className="h-2 w-2" />
-                  {item.badge}
-                </span>
-              )}
-            </div>
-
-            {/* Discount Stamp Tag */}
-            {discountPercentage > 0 && (
-              <div className="absolute bottom-2.5 right-2.5 z-10 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[9px] font-mono font-black px-2.5 py-1 rounded-lg shadow-lg border border-red-500/20 uppercase tracking-wider pointer-events-none animate-bounce">
-                -{discountPercentage}% SAVINGS
-              </div>
-            )}
-
-            <motion.img
-              src={item.image}
-              alt={item.name}
-              referrerPolicy="no-referrer"
-              className="h-full w-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 select-none pointer-events-none"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80";
-              }}
-            />
-
-            {/* premium hover banner */}
-            {onSelect && (
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                <div className="bg-purple-950/80 border border-purple-500/40 rounded-full px-4 py-2 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <Eye className="h-4 w-4 text-purple-300 animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-wider text-white">Inspect Details</span>
-                </div>
-              </div>
-            )}
-
-            {/* Subtle inner darkness border */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/15 pointer-events-none"></div>
-          </div>
-        )}
-
         {/* Wishlist Button (Heart) */}
         {onToggleWishlist && (
           <button
@@ -164,12 +96,12 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
         {/* Title */}
         <h3 
           onClick={() => onSelect && onSelect(item)}
-          className={`text-xl font-black text-white mt-1 font-sans tracking-tight group-hover:text-purple-300 transition-colors ${onSelect ? 'cursor-pointer' : ''}`}
+          className={`text-xl font-black text-white mt-4 font-sans tracking-tight group-hover:text-purple-300 transition-colors ${onSelect ? 'cursor-pointer' : ''}`}
         >
           {item.name}
         </h3>
 
-        {/* Pricing Layout supporting strike-through Discount */}
+        {/* Pricing Layout */}
         <div className="mt-3 flex items-baseline gap-2.5">
           <span className="text-2xl font-mono font-black text-white tracking-tight">
             {formatPrice(item.price * quantity)}
@@ -211,10 +143,8 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
         </div>
       </div>
 
-      {/* Footer controls & Action triggers */}
+      {/* Footer controls */}
       <div className="mt-6 pt-4 border-t border-purple-500/5 space-y-3">
-        
-        {/* Quantity Selection Panel */}
         {canSelectQuantity && (
           <div className="flex items-center justify-between bg-black/50 border border-purple-500/10 rounded-xl p-2">
             <span className="text-xs font-mono text-gray-400 pl-2">Adjust Quantity</span>
@@ -237,7 +167,6 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
           </div>
         )}
 
-        {/* Dynamic Buttons pair: Add to Cart & Buy Now */}
         <div className="flex gap-2.5">
           <button
             onClick={handleAdd}
@@ -258,7 +187,6 @@ export const StoreItemCard: React.FC<StoreItemCardProps> = ({
           </button>
         </div>
       </div>
-
     </motion.div>
   );
 };
