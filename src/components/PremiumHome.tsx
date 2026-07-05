@@ -119,7 +119,7 @@ export const PremiumHome: React.FC<PremiumHomeProps> = ({
 
   // Copy IP callback
   const handleCopyIp = () => {
-    navigator.clipboard.writeText("play.volexmc.net");
+    navigator.clipboard.writeText("rex-2.drexhost.in:19121");
     setIpCopied(true);
     if (soundEnabled) playSound('click');
     setTimeout(() => setIpCopied(false), 2000);
