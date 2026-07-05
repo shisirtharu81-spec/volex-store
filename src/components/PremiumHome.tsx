@@ -185,8 +185,7 @@ export const PremiumHome: React.FC<PremiumHomeProps> = ({
         "VIP+ Rank", "Volex Cyber Bundle", "40,000 Volex Coins", "Global Lobby Flight"
       ];
       const playersList = [
-        "shisir", "VolexGod", "MineSlayer", "RedstonePro", "CraftMaster", 
-        "EnderSlayer", "Notch", "Alex", "Steve", "GamerPro", "VoidKnight", "CosmicBoy"
+        "shisir"
       ];
       const avatarList = ["Steve", "Alex", "Notch", "MHF_Herobrine", "Dream", "Technoblade"];
       
