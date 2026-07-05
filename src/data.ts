@@ -5,13 +5,14 @@ export const STORE_ITEMS: StoreItem[] = [
   {
     id: "rank-vip",
     name: "VIP Rank",
-    price: 1.99,
-    originalPrice: 2.99,
+    price: 4.99,
+    originalPrice: 9.99,
     description: "Unlock essential bronze server privileges with lifetime duration. Stand out from normal players instantly.",
     category: "Ranks",
     badge: "BASIC LOBBY",
     perks: [
       "[VIP] Prefix in global server chat",
+      "Ability to fly in all Hub lobbies",
       "Green nameplate display & glow",
       "Home slot 4"
     ],
@@ -225,4 +226,115 @@ export const STORE_ITEMS: StoreItem[] = [
     ],
     gradient: "from-amber-500 to-rose-500",
     borderColor: "border-amber-500/40",
-    glowColor
+    glowColor: "shadow-amber-500/20",
+    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80",
+    animation: "float"
+  },
+  {
+    id: "coin-pack-4",
+    name: "40,000 Volex Coins",
+    price: 99.99,
+    originalPrice: 199.99,
+    description: "For the absolute coin emperors. Own the in-game market, buy full cosmetic arrays, and gift perks to friends.",
+    category: "Coins",
+    badge: "BEST VALUE BOOST",
+    perks: [
+      "40,000 Coins added immediately to server balance",
+      "Unlocks unique Golden name badge in lobby scoreboard list",
+      "8,000 bonus coins bundled in this pack"
+    ],
+    gradient: "from-amber-400 to-emerald-500",
+    borderColor: "border-emerald-500/40",
+    glowColor: "shadow-emerald-500/25",
+    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80",
+    animation: "scale-102"
+  },
+
+  // 4. KITS
+  {
+    id: "kit-gladiator",
+    name: "Gladiator PVP Kit",
+    price: 3.99,
+    originalPrice: 7.99,
+    description: "A heavy melee armor and weapon pack to dominate the Survival PvP Arenas. Fully enchanted iron tier.",
+    category: "Kits",
+    badge: "PVP CLASSIC",
+    perks: [
+      "Enchanted Gladiator Iron Armor Set (Protection III, Unbreaking II)",
+      "Gladiator Diamond Greatsword (Sharpness IV, Knockback I)",
+      "16x Golden Apples & 3x Instant Health II Potions",
+      "Can be claimed once per 24 hours in-game using `/kit gladiator`"
+    ],
+    gradient: "from-red-600 to-rose-800",
+    borderColor: "border-red-500/20",
+    glowColor: "shadow-red-500/10",
+    image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=400&q=80",
+    animation: "float"
+  },
+  {
+    id: "kit-miner",
+    name: "Master Miner Resource Kit",
+    price: 2.99,
+    originalPrice: 5.99,
+    description: "Drill through coordinate elevations easily. Equipped with high-speed haste picks and deep-slate torches.",
+    category: "Kits",
+    perks: [
+      "Efficiency V, Fortune III, Unbreaking III Diamond Pickaxe",
+      "Efficiency IV Diamond Shovel & Haste II Potion (8 mins)",
+      "3x Stacks of Torches and 1x Stack of Baked Potatoes",
+      "Available for use every 12 hours via `/kit miner` command"
+    ],
+    gradient: "from-yellow-600 to-amber-700",
+    borderColor: "border-yellow-500/20",
+    glowColor: "shadow-yellow-500/10",
+    image: "https://images.unsplash.com/photo-1536746803623-cef87080bfc8?auto=format&fit=crop&w=400&q=80",
+    animation: "scale-102"
+  },
+  {
+    id: "kit-cybertech",
+    name: "CyberTech Vanguard Kit",
+    price: 9.99,
+    originalPrice: 19.99,
+    description: "Advanced futuristic armor modules designed for Void Skyblock. Highly durable and anti-fall damage.",
+    category: "Kits",
+    badge: "VOID TECH",
+    perks: [
+      "Cyber Helmet with Night Vision and Water Breathing (Lifetime)",
+      "Cyber Chestplate with Thorns III and Blast Protection V",
+      "Cyber Boots with Feather Falling VI (Reduces void impacts by 50%)",
+      "Vanguard laser pickaxe (Efficiency VII, Silk Touch I)"
+    ],
+    gradient: "from-cyan-600 to-indigo-700",
+    borderColor: "border-cyan-500/30",
+    glowColor: "shadow-cyan-500/15",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80",
+    animation: "pulse-slow"
+  }
+];
+
+export const MOCK_REVIEWS: Review[] = [
+  {
+    id: "rev-1",
+    username: "notch",
+    rating: 5,
+    comment: "Volex has the absolute cleanest web interface ever created. Sync took literally 3 seconds. The keys opened with outstanding neon particles in-game!",
+    date: "2026-06-28",
+    verified: true
+  },
+  {
+    id: "rev-2",
+    username: "xX_Slayer_Xx",
+    rating: 5,
+    comment: "Upgraded from VIP to MVP+ last night. The discount was instantly applied! Highly professional, zero lag on execution commands.",
+    date: "2026-07-02",
+    verified: true
+  },
+  {
+    id: "rev-3",
+    username: "MinecraftGod",
+    rating: 4,
+    comment: "Super smooth checkout with Razorpay. Highly recommend buying the 5x Cosmic Keys, the reward kits are unbelievably robust on survival! Awesome store.",
+    date: "2026-07-03",
+    verified: true
+  }
+];
