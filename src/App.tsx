@@ -334,7 +334,7 @@ export default function App() {
           setActiveSection('dashboard');
         }}
       />
-
+      
       {/* Interactive Sliding Side Cart Drawer */}
       <CheckoutModal
         isOpen={isCartOpen}
