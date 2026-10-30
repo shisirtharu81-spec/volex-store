@@ -1,1 +1,121 @@
 @import "tailwindcss";
+
+/* VOLEX Store — Rustical-inspired design system */
+:root {
+  color-scheme: light;
+  --volex-blue: #0057ff;
+  --volex-blue-dark: #0047d1;
+  --volex-ink: #191919;
+  --volex-muted: #777777;
+  --volex-line: #e8e8e8;
+  --volex-paper: #ffffff;
+  --volex-canvas: #f9f9f9;
+  --volex-radius: 6px;
+  --volex-pill: 999px;
+  --volex-shadow: 0 10px 30px rgba(25, 25, 25, 0.06);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--volex-canvas);
+  color: var(--volex-ink);
+  font-family: Inter, "Acumin Pro", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+button { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+::selection { background: rgba(0, 87, 255, .16); color: var(--volex-ink); }
+
+/* App canvas and navigation */
+#app {
+  min-height: 100vh;
+  background: var(--volex-canvas) !important;
+  color: var(--volex-ink) !important;
+}
+#app > .absolute { display: none !important; }
+#volex-navbar {
+  background: rgba(255,255,255,.94) !important;
+  color: var(--volex-ink) !important;
+  border-bottom: 1px solid var(--volex-line) !important;
+  box-shadow: 0 2px 14px rgba(25,25,25,.035);
+  backdrop-filter: blur(18px);
+}
+#volex-navbar [class*="text-white"] { color: var(--volex-ink) !important; }
+#volex-navbar [class*="text-gray-"] { color: #777 !important; }
+#volex-navbar [class*="text-purple-"],
+#volex-navbar [class*="text-cyan-"] { color: var(--volex-blue) !important; }
+#volex-navbar [class*="border-purple-"],
+#volex-navbar [class*="border-white/"] { border-color: var(--volex-line) !important; }
+#volex-navbar [class*="bg-black/"] { background-color: rgba(255,255,255,.96) !important; }
+#volex-navbar [class*="bg-[#0c0c0e]"] { background: #f4f7ff !important; }
+#volex-navbar [class*="from-purple-"] { --tw-gradient-from: #0057ff var(--tw-gradient-from-position) !important; }
+#volex-navbar [class*="to-cyan-"] { --tw-gradient-to: #66a0ff var(--tw-gradient-to-position) !important; }
+
+/* Main content: convert the old neon surfaces into calm paper surfaces */
+#app main { color: var(--volex-ink); }
+#app main [class*="border-purple-"],
+#app main [class*="border-white/"] { border-color: var(--volex-line) !important; }
+#app main [class*="text-purple-"],
+#app main [class*="text-cyan-"] { color: var(--volex-blue) !important; }
+#app main [class*="text-gray-"] { color: #777 !important; }
+#app main [class*="bg-black/40"],
+#app main [class*="bg-black/50"],
+#app main [class*="bg-black/60"],
+#app main [class*="bg-[#08080c]"],
+#app main [class*="bg-[#060609]"],
+#app main [class*="bg-[#0a0a0c]"] {
+  background-color: #fff !important;
+}
+#app main [class*="bg-purple-950/"],
+#app main [class*="bg-purple-500/"],
+#app main [class*="bg-white/5"] { background-color: #f3f6ff !important; }
+#app main [class*="text-white"] { color: var(--volex-ink) !important; }
+#app main button[class*="bg-gradient-to-r"],
+#app main button[class*="bg-purple-600"],
+#app main button[class*="bg-indigo-600"] {
+  background: var(--volex-blue) !important;
+  color: #fff !important;
+  border-color: var(--volex-blue) !important;
+}
+#app main button[class*="bg-gradient-to-r"]:hover,
+#app main button[class*="bg-purple-600"]:hover { background: var(--volex-blue-dark) !important; }
+#app main [class*="from-purple-"] { --tw-gradient-from: #0057ff var(--tw-gradient-from-position) !important; }
+#app main [class*="to-indigo-"] { --tw-gradient-to: #4d8bff var(--tw-gradient-to-position) !important; }
+#app main [class*="rounded-2xl"],
+#app main [class*="rounded-3xl"] { border-radius: 10px; }
+#app main [class*="shadow-[0_0_"] { box-shadow: var(--volex-shadow) !important; }
+
+/* Keep photo overlays legible */
+.volex-hero-media [class*="text-white"] { color: #fff !important; }
+.volex-hero-media { isolation: isolate; }
+
+/* Reusable home-page components */
+.volex-home { color: var(--volex-ink); }
+.volex-eyebrow { color: var(--volex-blue); letter-spacing: .16em; }
+.volex-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--volex-pill);
+  background: var(--volex-blue); color: #fff; font-weight: 700;
+  transition: background .2s ease, transform .2s ease;
+}
+.volex-primary:hover { background: var(--volex-blue-dark); transform: translateY(-1px); }
+.volex-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border: 1px solid var(--volex-line);
+  border-radius: var(--volex-pill); background: #fff; color: var(--volex-ink); font-weight: 700;
+}
+.volex-panel { background: #fff; border: 1px solid var(--volex-line); border-radius: 10px; box-shadow: var(--volex-shadow); }
+.volex-section-title { color: var(--volex-ink); letter-spacing: -.04em; }
+.volex-input {
+  width: 100%; min-height: 46px; border: 1px solid var(--volex-line);
+  border-radius: var(--volex-radius); padding: 10px 13px; background: #fff; color: var(--volex-ink);
+  outline: none; transition: border-color .2s ease, box-shadow .2s ease;
+}
+.volex-input:focus { border-color: var(--volex-blue); box-shadow: 0 0 0 3px rgba(0,87,255,.1); }
+.volex-product-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+@media (max-width: 900px) { .volex-product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 640px) {
+  .volex-product-grid { grid-template-columns: 1fr; }
+  .volex-home .volex-hero { padding: 36px 22px !important; }
+}
